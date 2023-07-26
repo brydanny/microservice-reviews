@@ -1,0 +1,8 @@
+export enum Category {
+  LIMPIEZA,
+  COMUNICACION,
+  LLEGADA,
+  FIABILIDAD,
+  UBICACION,
+  PRECIO,
+}
