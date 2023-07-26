@@ -22,7 +22,7 @@ export class ReviewProperty extends AggregateRoot {
   public registrarComentario(): void {
     this.fecha = new Date();
   }
-  public addCategoryScore(positionCategory: number, score: number) {
+  public addCategoryScore(positionCategory: number, score: number): void {
     this.categoryReviews[positionCategory].setScoreCategory(score);
   }
 }
