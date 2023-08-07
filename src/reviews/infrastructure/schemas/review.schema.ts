@@ -9,15 +9,10 @@ export class ReviewModelSchema extends IdentifiableEntitySchema {
   propertyId: string;
 
   @Prop({ required: true })
-  numberOfGuests: number;
+  huespedId: string;
 
-  // getNumberOfGuests(): number {
-  //   return this.numberOfGuests;
-  // }
-
-  // getPropertyId(): string {
-  //   return this.propertyId;
-  // }
+  @Prop({ required: true })
+  comentario: string;
 }
 
 export const ReviewSchema = SchemaFactory.createForClass(ReviewModelSchema);

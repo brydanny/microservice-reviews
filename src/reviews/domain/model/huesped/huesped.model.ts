@@ -1,4 +1,4 @@
-import { AggregateRoot } from '../../../../shared-kernel/core/aggregateRoot';
+import { AggregateRoot } from '@nestjs/cqrs';
 
 export class Huesped extends AggregateRoot {
   private name: string;

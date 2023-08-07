@@ -1,4 +1,4 @@
-import { AggregateRoot } from '../../../../shared-kernel/core/aggregateRoot';
+import { AggregateRoot } from '@nestjs/cqrs';
 
 export class Property extends AggregateRoot {
   private name: string;
@@ -8,5 +8,19 @@ export class Property extends AggregateRoot {
     super();
     this.name = name;
     this.address = address;
+  }
+  public getName(): string {
+    return this.name;
+  }
+
+  public setName(value: string) {
+    this.name = value;
+  }
+  public getAddress(): string {
+    return this.address;
+  }
+
+  public setAddress(value: string) {
+    this.address = value;
   }
 }

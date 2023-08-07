@@ -5,13 +5,18 @@ import { Type } from 'class-transformer';
 // import { CreateCustomizedDto } from './customized.dtos';
 
 export class CreateReviewDto {
+  @IsNumber()
+  @IsNotEmpty()
+  @ApiProperty({ description: `number og guests` })
+  readonly comentario: string;
+
   @IsString()
   @IsNotEmpty()
   @ApiProperty({ description: `property identifier` })
   readonly propertyId: string;
 
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  @ApiProperty({ description: `number og guests` })
-  readonly numberOfGuests: number;
+  @ApiProperty({ description: `property identifier` })
+  readonly huespedId: string;
 }
