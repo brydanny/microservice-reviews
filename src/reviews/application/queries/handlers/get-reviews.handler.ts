@@ -1,5 +1,5 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { GetReviewsQuery } from '../impl';
+import { GetReviewsQuery } from '../impl/get-reviews.query';
 import { ReviewRepository } from '../../../infrastructure/repository/review.repository';
 
 @QueryHandler(GetReviewsQuery)

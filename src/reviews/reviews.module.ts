@@ -5,8 +5,10 @@ import { CommandHandlers } from './application/commands/handlers';
 import { QueryHandlers } from './application/queries/handlers';
 import { ReviewController } from './api/review.controller';
 import { PropertyController } from './api/property.controller';
+import { HuespedController } from './api/huesped.controller';
 import { ReviewRepository } from './infrastructure/repository/review.repository';
 import { PropertyRepository } from './infrastructure/repository/property.repository';
+import { HuespedRepository } from './infrastructure/repository/huesped.repository';
 
 import {
   ReviewModelSchema,
@@ -16,8 +18,14 @@ import {
   PropertyModelSchema,
   PropertySchema,
 } from './infrastructure/schemas/property.schema';
+import {
+  HuespedModelSchema,
+  HuespedSchema,
+} from './infrastructure/schemas/huesped.schema';
 import { PropertyMapper } from './infrastructure/mapper/property.mapper';
 import { PropertyFactory } from './domain/factories/property.factory';
+import { HuespedMapper } from './infrastructure/mapper/huesped.mapper';
+import { HuespedFactory } from './domain/factories/huesped.factory';
 
 @Module({
   imports: [
@@ -34,15 +42,24 @@ import { PropertyFactory } from './domain/factories/property.factory';
         schema: PropertySchema,
       },
     ]),
+    MongooseModule.forFeature([
+      {
+        name: HuespedModelSchema.name,
+        schema: HuespedSchema,
+      },
+    ]),
   ],
-  controllers: [ReviewController, PropertyController],
+  controllers: [ReviewController, PropertyController, HuespedController],
   providers: [
     ReviewRepository,
     PropertyRepository,
+    HuespedRepository,
     ...CommandHandlers,
     ...QueryHandlers,
     PropertyMapper,
     PropertyFactory,
+    HuespedMapper,
+    HuespedFactory,
   ],
 })
 export class ReviewsModule {}
