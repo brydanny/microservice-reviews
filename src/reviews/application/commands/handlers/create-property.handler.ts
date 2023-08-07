@@ -29,9 +29,11 @@ export class CreatePropertyHandler
       );
 
       property.commit();
-
+      console.log(propertyObject);
+      console.log(property);
       return property;
     } catch (error) {
+      console.log(error.message);
       throw new BadRequestException(error.message);
     }
   }

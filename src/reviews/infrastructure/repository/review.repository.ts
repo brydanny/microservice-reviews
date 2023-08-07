@@ -1,23 +1,40 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { ObjectId } from 'mongodb';
 
 import { ReviewModelSchema } from '../schemas/review.schema';
 import { iReviewRepository } from '../../domain/repositories/iReview';
+import { ReviewProperty } from '../../domain/model/review-property/review-property.model';
+import { ReviewMapper } from '../mapper/review.mapper';
 
 @Injectable()
 export class ReviewRepository implements iReviewRepository {
   constructor(
     @InjectModel(ReviewModelSchema.name)
-    private reviewModel: Model<ReviewModelSchema>,
+    private readonly reviewModel: Model<ReviewModelSchema>,
+    private readonly reviewMapper: ReviewMapper,
   ) {}
 
-  newId: () => Promise<string>;
+  save = (review: ReviewProperty): ReviewProperty => {
+    const newReview = new this.reviewModel({
+      _id: new ObjectId(),
+      comentario: review.getComentario(),
+      propertyId: review.getPropertyId(),
+      huespedId: review.getHuespedId(),
+      registerDate: review.getRegisterDate(),
+    });
 
-  save: (review: ReviewModelSchema) => Promise<void>;
+    newReview.save();
 
-  findById: (id: string) => Promise<ReviewModelSchema | null>;
+    return this.reviewMapper.mapToDomain(newReview);
+  };
 
-  public findAll = (): Promise<ReviewModelSchema[]> =>
-    this.reviewModel.find().exec();
+  findById = (id: string): Promise<ReviewModelSchema> => {
+    return this.reviewModel.findById(id).exec();
+  };
+
+  findAll = (): Promise<ReviewModelSchema[]> => {
+    return this.reviewModel.find().exec();
+  };
 }

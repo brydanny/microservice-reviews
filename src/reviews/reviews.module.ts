@@ -26,6 +26,8 @@ import { PropertyMapper } from './infrastructure/mapper/property.mapper';
 import { PropertyFactory } from './domain/factories/property.factory';
 import { HuespedMapper } from './infrastructure/mapper/huesped.mapper';
 import { HuespedFactory } from './domain/factories/huesped.factory';
+import { ReviewMapper } from './infrastructure/mapper/review.mapper';
+import { ReviewFactory } from './domain/factories/review.factory';
 
 @Module({
   imports: [
@@ -60,6 +62,8 @@ import { HuespedFactory } from './domain/factories/huesped.factory';
     PropertyFactory,
     HuespedMapper,
     HuespedFactory,
+    ReviewMapper,
+    ReviewFactory,
   ],
 })
 export class ReviewsModule {}

@@ -3,6 +3,7 @@ import { Controller, Get, Post, Body } from '@nestjs/common';
 import { CreateReviewDto } from '../application/dtos/review.dto';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateReviewCommand } from './../application/commands/impl/create-review.command';
+import { GetReviewsQuery } from '../application/queries/impl/get-reviews.query';
 
 @Controller('review')
 export class ReviewController {
@@ -12,10 +13,9 @@ export class ReviewController {
     private readonly queryBus: QueryBus,
   ) {}
 
-  @Get()
-  getHello() {
-    //return this.appService.getHello();
-    return [];
+  @Get('/')
+  findAll() {
+    return this.queryBus.execute(new GetReviewsQuery());
   }
   @Post()
   create(@Body() payload: CreateReviewDto) {
