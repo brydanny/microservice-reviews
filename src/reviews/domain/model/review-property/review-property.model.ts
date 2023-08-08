@@ -1,6 +1,6 @@
 import { AggregateRoot } from '@nestjs/cqrs';
 //import { Huesped } from './../huesped/huesped.model';
-import { CategoryReview } from '../../valueObjects/category-review.valueObject';
+import { CategoryReview } from './category';
 //import { Category } from './category.enum';
 
 export class ReviewProperty extends AggregateRoot {

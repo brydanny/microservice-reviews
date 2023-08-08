@@ -7,7 +7,7 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
-import { CategoryReview } from '../../domain/valueObjects/category-review.valueObject';
+import { CategoryReview } from '../../domain/model/review-property/category';
 
 export class CreateReviewDto {
   @IsNumber()

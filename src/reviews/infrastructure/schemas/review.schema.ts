@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { IdentifiableEntitySchema } from '../database/identifiable-entity.schema';
-import { CategoryReview } from '../../domain/valueObjects/category-review.valueObject';
+import { CategoryReview } from '../../domain/model/review-property/category';
 
 @Schema({ collection: 'reviews' })
 export class ReviewModelSchema extends IdentifiableEntitySchema {
