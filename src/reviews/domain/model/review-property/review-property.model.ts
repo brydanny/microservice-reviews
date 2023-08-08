@@ -18,7 +18,7 @@ export class ReviewProperty extends AggregateRoot {
     huespedId: string,
     categoryReview: any,
   ) {
-    console.log(":::categoryReview Model:::", categoryReview);
+    //console.log('categoryReview Model', categoryReview);
     super();
     //this.id = uuidv4();
     this.propertyId = propertyId;

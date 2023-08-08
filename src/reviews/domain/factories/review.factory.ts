@@ -10,8 +10,7 @@ export class ReviewFactory implements iReview {
     huespedId: string,
     categoryReview: any,
   ) {
-
-    console.log("factory", categoryReview);
+    console.log('factory', categoryReview);
     return new ReviewProperty(
       comentario,
       propertyId,

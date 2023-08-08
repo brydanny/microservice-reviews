@@ -19,9 +19,9 @@ export class CreateReviewHandler
     try {
       const { createReviewRequest } = command;
 
-      console.log("payload", createReviewRequest);
+      console.log('payload', createReviewRequest);
 
-      console.log("handler", createReviewRequest.categoryReview);
+      console.log('handler', createReviewRequest.categoryReview);
 
       const reviewObject = this.reviewFactory.createReview(
         createReviewRequest.comentario,
