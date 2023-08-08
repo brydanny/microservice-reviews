@@ -19,6 +19,7 @@ export class ReviewController {
   }
   @Post()
   create(@Body() payload: CreateReviewDto) {
+    console.log(payload);
     return this.commandBus.execute(new CreateReviewCommand(payload));
   }
 }

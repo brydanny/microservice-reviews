@@ -23,6 +23,7 @@ export class ReviewRepository implements iReviewRepository {
       propertyId: review.getPropertyId(),
       huespedId: review.getHuespedId(),
       registerDate: review.getRegisterDate(),
+      categoryReview: review.getCategoryReview(),
     });
 
     newReview.save();

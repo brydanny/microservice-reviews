@@ -19,10 +19,15 @@ export class CreateReviewHandler
     try {
       const { createReviewRequest } = command;
 
+      console.log("payload", createReviewRequest);
+
+      console.log("handler", createReviewRequest.categoryReview);
+
       const reviewObject = this.reviewFactory.createReview(
         createReviewRequest.comentario,
         createReviewRequest.propertyId,
         createReviewRequest.huespedId,
+        createReviewRequest.categoryReview,
       );
 
       const review = this.publisher.mergeObjectContext(

@@ -17,6 +17,7 @@ export class ReviewMapper {
       reviewDocumentSchema.propertyId,
       reviewDocumentSchema.huespedId,
       reviewDocumentSchema.comentario,
+      reviewDocumentSchema.categoryReview,
     );
   }
 

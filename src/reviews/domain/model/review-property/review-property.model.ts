@@ -1,6 +1,6 @@
 import { AggregateRoot } from '@nestjs/cqrs';
 //import { Huesped } from './../huesped/huesped.model';
-//import { CategoryReview } from '../../valueObjects/category-review.valueObject';
+import { CategoryReview } from '../../valueObjects/category-review.valueObject';
 //import { Category } from './category.enum';
 
 export class ReviewProperty extends AggregateRoot {
@@ -10,15 +10,22 @@ export class ReviewProperty extends AggregateRoot {
   private propertyId: string;
   private huespedId: string;
   private registerDate: Date;
-  //private categoryReviews: CategoryReview[];
+  private categoryReview: CategoryReview;
 
-  constructor(comentario: string, propertyId: string, huespedId: string) {
+  constructor(
+    comentario: string,
+    propertyId: string,
+    huespedId: string,
+    categoryReview: any,
+  ) {
+    console.log(":::categoryReview Model:::", categoryReview);
     super();
     //this.id = uuidv4();
     this.propertyId = propertyId;
     this.huespedId = huespedId;
     this.comentario = comentario;
     this.registerDate = new Date();
+    this.categoryReview = categoryReview;
     /*Object.keys(Category).map((element) =>
       this.categoryReviews.push(new CategoryReview(element)),
     );*/ //OJO
@@ -43,6 +50,12 @@ export class ReviewProperty extends AggregateRoot {
   }
   public getRegisterDate(): Date {
     return this.registerDate;
+  }
+  public getCategoryReview(): any {
+    return this.categoryReview;
+  }
+  public setCategoryReview(value: any) {
+    this.categoryReview = value;
   }
   /*public registrarComentario(): void {
     this.fecha = new Date();
