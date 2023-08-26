@@ -43,6 +43,10 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+
+# integration tests
+# integratios tests postman test/integration/postman
+$ npm run test:integration
 ```
 
 

@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "20f5299e-98f0-4d5a-99c2-2a1592823e62",
+		"name": "NurBNB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9622613",
+		"_collection_link": "https://gold-sunset-530269.postman.co/workspace/MyProjects~04fc12d6-e49a-48aa-969f-c251ac1b4e5d/collection/9622613-20f5299e-98f0-4d5a-99c2-2a1592823e62?action=share&source=collection_link&creator=9622613"
+	},
+	"item": [
+		{
+			"name": "property",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var items = JSON.parse(pm.environment.get(\"items\"));",
+							"//console.log(\"items\",pm.environment.get(\"items\")) ;",
+							"var iActual = parseInt(pm.environment.get(\"indiceActual\"));",
+							"if(iActual >= items.length){",
+							"    iActual = 0;",
+							"}",
+							"var item = items[iActual];",
+							"//console.log(\"item\",item);",
+							"pm.environment.set(\"nombreActual\", item.name); ",
+							"pm.environment. set(\"direccionActual\", item.address);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var items = JSON.parse(pm.environment.get(\"items\"));",
+							"var iActual = parseInt(pm.environment.get(\"indiceActual\"));",
+							"var item = items[iActual];",
+							"pm.test(\"Status code is \"+ item.response, function () {",
+							"    pm.response.to.have.status(item.response);",
+							"});",
+							"if (item.response == 201) {",
+							"    pm.test(\"Status code is 201\", function () {",
+							"        pm.response.to.have.status(201);",
+							"    });",
+							"",
+							"    pm.test(\"Response body is not empty\", function () {",
+							"        const responseBody = pm.response.text();",
+							"        pm.expect(responseBody).to.not.be.empty;",
+							"    });",
+							"    pm.test(\"La respuesta tiene todas las propiedades\", () => {",
+							"        //parse the response JSON and test three properties",
+							"        const responseJson = pm.response.json();",
+							"        //pm.expect(responseJson.name).to.eql('name');",
+							"        pm.expect(responseJson.name).to.be.a('string');",
+							"        pm.expect(responseJson.address).to.be.a('string');",
+							"        //pm.expect(responseJson.id).to.have.lengthOf(1);",
+							"    });",
+							"}",
+							"    ",
+							"",
+							"iActual = iActual + 1;",
+							"if(iActual >= items.length){",
+							"    iActual = 0;",
+							"}",
+							"pm.environment.set(\"indiceActual\", iActual);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"{{nombreActual}}\",\n\t\"address\": \"{{direccionActual}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_PRINCIPAL}}/property/",
+					"host": [
+						"{{URL_PRINCIPAL}}"
+					],
+					"path": [
+						"property",
+						""
+					]
+				},
+				"description": "property"
+			},
+			"response": []
+		}
+	]
+}

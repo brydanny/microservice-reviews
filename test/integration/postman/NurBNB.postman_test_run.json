@@ -1,0 +1,117 @@
+{
+	"id": "0121985a-dfc8-4900-bbf7-2b5236791136",
+	"name": "NurBNB",
+	"timestamp": "2023-08-26T12:29:28.520Z",
+	"collection_id": "9622613-20f5299e-98f0-4d5a-99c2-2a1592823e62",
+	"folder_id": 0,
+	"environment_id": "9622613-8d2c6c7c-f8e4-49e9-b6fa-b84fd9503a0d",
+	"totalPass": 32,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-08-26T12:29:27.625Z",
+	"totalFail": 2,
+	"results": [
+		{
+			"id": "b56622ff-7767-4444-ad8d-6e2b4355473d",
+			"name": "property",
+			"url": "http://localhost:3000/property/",
+			"time": 5,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 500": false
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 15,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 8,
+					"fail": 0
+				},
+				"La respuesta tiene todas las propiedades": {
+					"pass": 8,
+					"fail": 0
+				},
+				"Status code is 500": {
+					"pass": 0,
+					"fail": 2
+				}
+			},
+			"times": [
+				24,
+				7,
+				14,
+				5,
+				5,
+				5,
+				5,
+				8,
+				4,
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response body is not empty": true,
+					"La respuesta tiene todas las propiedades": true
+				},
+				{
+					"Status code is 201": true,
+					"Response body is not empty": true,
+					"La respuesta tiene todas las propiedades": true
+				},
+				{
+					"Status code is 201": true,
+					"Response body is not empty": true,
+					"La respuesta tiene todas las propiedades": true
+				},
+				{
+					"Status code is 201": true,
+					"Response body is not empty": true,
+					"La respuesta tiene todas las propiedades": true
+				},
+				{
+					"Status code is 500": false
+				},
+				{
+					"Status code is 201": true,
+					"Response body is not empty": true,
+					"La respuesta tiene todas las propiedades": true
+				},
+				{
+					"Status code is 201": true,
+					"Response body is not empty": true,
+					"La respuesta tiene todas las propiedades": true
+				},
+				{
+					"Status code is 201": true,
+					"Response body is not empty": true,
+					"La respuesta tiene todas las propiedades": true
+				},
+				{
+					"Status code is 201": true,
+					"Response body is not empty": true,
+					"La respuesta tiene todas las propiedades": true
+				},
+				{
+					"Status code is 500": false
+				}
+			]
+		}
+	],
+	"count": 10,
+	"totalTime": 82,
+	"collection": {
+		"requests": [
+			{
+				"id": "b56622ff-7767-4444-ad8d-6e2b4355473d",
+				"method": "POST"
+			}
+		]
+	}
+}
