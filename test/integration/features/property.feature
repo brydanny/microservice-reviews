@@ -5,6 +5,6 @@ Feature: Property API
 
   Scenario: Create a property
     When a POST request is made to "/property" with the following data:
-      | name     | Departamento prueba  |
-      | pricePerNight | 200 |
+      | name     | Casa de Campo  |
+      | address | Coroico,  Region, Bolivia |
     Then the response status code should be 201

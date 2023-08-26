@@ -13,7 +13,7 @@ Given(
     const testData = table.rowsHash();
     const payload = {
       name: testData.name,
-      pricePerNight: testData.pricePerNight,
+      address: testData.address,
     };
     response = await request(app.getHttpServer()).post(url).send(payload);
   },
