@@ -11,7 +11,14 @@ El proyecto esta desarrollado en Nestjs, contiene el microservicio de Reseñas d
 https://miro.com/app/board/uXjVM5vV3HA=/?moveToWidget=3458764561085745471&cot=10
 
 ## Video youtube
-https://youtu.be/3yO9xecf8bU
+
+https://youtu.be/oiws1PjaE30
+
+## Screenshots de Tests
+
+![image](https://drive.google.com/file/d/15sAmgjEZZGAnL5fSNBN72eZK-4LA5Bbg/view?usp=drive_link)
+
+![image](https://drive.google.com/file/d/1sKEQ_AHZEf9dEsCoXY4oONOuHvelS09Y/view?usp=drive_link)
 
 ## Installation
 
