@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>12/15</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>1/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">76.92% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>10/13</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -88,51 +88,51 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Controller, Get, Post, Body } from '@nestjs/common';</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Controller, Get, Post, Body } from '@nestjs/common';
 //import { AppService } from '../../app.service';
-<span class="cstat-no" title="statement not covered" >import { CreateReviewDto } from '../application/dtos/review.dto';</span>
-<span class="cstat-no" title="statement not covered" >import { CommandBus, QueryBus } from '@nestjs/cqrs';</span>
-<span class="cstat-no" title="statement not covered" >import { CreateReviewCommand } from './../application/commands/impl/create-review.command';</span>
-<span class="cstat-no" title="statement not covered" >import { GetReviewsQuery } from '../application/queries/impl/get-reviews.query';</span>
+import { CreateReviewDto } from '../application/dtos/review.dto';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { CreateReviewCommand } from './../application/commands/impl/create-review.command';
+import { GetReviewsQuery } from '../application/queries/impl/get-reviews.query';
 &nbsp;
 @Controller('review')
-export <span class="cstat-no" title="statement not covered" >class <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >ReviewController </span>{</span></span>
-<span class="fstat-no" title="function not covered" >  constructor(</span>
+export class ReviewController {
+  constructor(
     //private readonly appService: AppService,
-    private readonly <span class="cstat-no" title="statement not covered" >commandBus: C</span>ommandBus,
-    private readonly <span class="cstat-no" title="statement not covered" >queryBus: Q</span>ueryBus,
+    private readonly commandBus: CommandBus,
+    private readonly queryBus: QueryBus,
   ) {}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  @Get('/')</span>
+  @Get('/')
 <span class="fstat-no" title="function not covered" >  findAll(</span>) {
 <span class="cstat-no" title="statement not covered" >    return this.queryBus.execute(new GetReviewsQuery());</span>
   }
-<span class="cstat-no" title="statement not covered" >  @Post()</span>
+  @Post()
 <span class="fstat-no" title="function not covered" >  create(</span>@Body() payload: CreateReviewDto) {
 <span class="cstat-no" title="statement not covered" >    console.log(payload);</span>
 <span class="cstat-no" title="statement not covered" >    return this.commandBus.execute(new CreateReviewCommand(payload));</span>
@@ -145,7 +145,7 @@ export <span class="cstat-no" title="statement not covered" >class <span class="
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-11T03:20:31.230Z
+                at 2023-09-11T12:06:35.318Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
