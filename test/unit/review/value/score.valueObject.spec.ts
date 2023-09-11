@@ -1,7 +1,7 @@
 import { Score } from '../../../../src/reviews/domain/valueObjects/score.valueObject';
 
 describe('Score ValueObject', () => {
-  test('Creacion e score con la validad minima de cero', () => {
+  test('Creacion score con la validad minima de cero', () => {
     const actualScore: Score = new Score();
 
     expect(actualScore.getScore()).toBe(0);

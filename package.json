@@ -18,7 +18,7 @@
     "test:integration": "cucumber-js test --config cucumber.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
+    "test:cov": "jest --suite=unit --testPathPattern=test/unit --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
@@ -69,15 +69,21 @@
       "json",
       "ts"
     ],
-    "rootDir": "test",
+    "rootDir": "./",
+    "modulePaths": [
+      "<rootDir>"
+    ],
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
-      "**/*.(t|j)s"
+      "**/*.(t|j)s",
+      "!**/test/**",
+      "!**/dist/**",
+      "!.eslintrc.js"
     ],
-    "coverageDirectory": "../coverage",
+    "coverageDirectory": "./test/reports/coverage",
     "testEnvironment": "node"
   }
 }
