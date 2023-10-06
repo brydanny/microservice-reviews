@@ -1,11 +1,31 @@
 version: '3.3'
+
+networks:
+  review-net:
+
 services:
+  
+  review:
+    image: brydanny/nestjs-microserv-review
+    environment:
+      - MONGO_PORT=27017
+      - MONGO_HOST=mongo
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongo
+    networks:
+      - review-net
+
   mongo:
     image: mongo:4.4
     environment:
+      MONGO_INITDB_DATABASE: review-db
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
     ports:
       - 27017:27017
+    networks:
+      - review-net  
     volumes:
       - ./mongo_data:/data/db  

@@ -55,6 +55,19 @@ $ npm run test:cov
 # integratios tests postman test/integration/postman
 $ npm run test:integration
 ```
+## Docker (Contenerización)
 
+```bash
+# crear imagen
+$ docker image build -t brydanny/nestjs-microserv-review .
+
+# correr contenedor
+$ docker container run -d --name micro -p 3009:3000 brydanny/nestjs-microserv-review
+
+# publicar imagen
+$ docker image push brydanny/nestjs-microserv-review
+
+# levantar contenedores
+docker-compose up -d 
 
 
