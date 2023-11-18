@@ -20,8 +20,11 @@ export class CreatePropertyHandler
       const { createPropertyRequest } = command;
 
       const propertyObject = this.propertyFactory.createProperty(
+        createPropertyRequest.id,
         createPropertyRequest.name,
         createPropertyRequest.address,
+        createPropertyRequest.typeProperty,
+        createPropertyRequest.city,
       );
 
       const property = this.publisher.mergeObjectContext(
@@ -29,6 +32,7 @@ export class CreatePropertyHandler
       );
 
       property.commit();
+      console.log('PropertyDCA created');
       console.log(propertyObject);
       console.log(property);
       return property;

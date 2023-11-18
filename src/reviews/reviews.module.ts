@@ -45,6 +45,8 @@ import { HostMapper } from './infrastructure/mapper/host.mapper';
 import { HostFactory } from './domain/factories/host.factory';
 import { ReviewGuestMapper } from './infrastructure/mapper/review-guest.mapper';
 import { ReviewGuestFactory } from './domain/factories/review-guest.factory';
+import { RabbitMQModule } from '@golevelup/nestjs-rabbitmq';
+import { ReviewService } from './api/review-event/review.service';
 
 @Module({
   imports: [
@@ -79,6 +81,20 @@ import { ReviewGuestFactory } from './domain/factories/review-guest.factory';
         schema: ReviewGuestSchema,
       },
     ]),
+    RabbitMQModule.forRoot(RabbitMQModule, {
+      exchanges: [
+        {
+          name: 'demostracion',
+          type: 'fanout',
+        },
+        {
+          name: 'booking-service:reserva-creada',
+          type: 'fanout',
+        },
+      ],
+      //uri: 'amqps://farhdenj:BilLhsNpcQHME1p2ItwtM5sZImZaqmDC@shrimp.rmq.cloudamqp.com/farhdenj',
+      uri: 'amqp://localhost',
+    }),
   ],
   controllers: [
     ReviewController,
@@ -105,6 +121,7 @@ import { ReviewGuestFactory } from './domain/factories/review-guest.factory';
     HostFactory,
     ReviewGuestMapper,
     ReviewGuestFactory,
+    ReviewService,
   ],
 })
 export class ReviewsModule {}

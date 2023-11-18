@@ -1,3 +1,9 @@
 export interface iProperty {
-  createProperty(name: string, address: string);
+  createProperty(
+    id: number,
+    name: string,
+    address: string,
+    typeProperty: string,
+    city: string,
+  );
 }

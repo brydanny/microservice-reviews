@@ -14,15 +14,21 @@ export class PropertyMapper {
 
   public mapToDomain(propertyDocumentSchema: PropertyModelSchema): Property {
     return new Property(
+      propertyDocumentSchema.id,
       propertyDocumentSchema.name,
       propertyDocumentSchema.address,
+      propertyDocumentSchema.typeProperty,
+      propertyDocumentSchema.city,
     );
   }
 
   public mapToEntity(propertyEntity: Property): PropertyModelSchema {
     const propertySchema = new this.propertyModel({
+      id: propertyEntity.getId(),
       name: propertyEntity.getName(),
       address: propertyEntity.getAddress(),
+      typeProperty: propertyEntity.getTypeProperty(),
+      city: propertyEntity.getCity(),
     });
     return propertySchema;
   }
