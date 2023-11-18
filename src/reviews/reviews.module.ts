@@ -47,7 +47,8 @@ import { ReviewGuestMapper } from './infrastructure/mapper/review-guest.mapper';
 import { ReviewGuestFactory } from './domain/factories/review-guest.factory';
 import { RabbitMQModule } from '@golevelup/nestjs-rabbitmq';
 import { ReviewService } from './api/review-event/review.service';
-
+import { HostService } from './api/review-event/host.service';
+import { HuespedService } from './api/review-event/huesped.service';
 @Module({
   imports: [
     CqrsModule,
@@ -91,6 +92,10 @@ import { ReviewService } from './api/review-event/review.service';
           name: 'booking-service:reserva-creada',
           type: 'fanout',
         },
+        {
+          name: 'booking-service:guest-creado',
+          type: 'fanout',
+        },
       ],
       //uri: 'amqps://farhdenj:BilLhsNpcQHME1p2ItwtM5sZImZaqmDC@shrimp.rmq.cloudamqp.com/farhdenj',
       uri: 'amqp://localhost',
@@ -122,6 +127,8 @@ import { ReviewService } from './api/review-event/review.service';
     ReviewGuestMapper,
     ReviewGuestFactory,
     ReviewService,
+    HostService,
+    HuespedService,
   ],
 })
 export class ReviewsModule {}
