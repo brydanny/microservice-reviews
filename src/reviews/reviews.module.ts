@@ -49,6 +49,7 @@ import { RabbitMQModule } from '@golevelup/nestjs-rabbitmq';
 import { ReviewService } from './api/review-event/review.service';
 import { HostService } from './api/review-event/host.service';
 import { HuespedService } from './api/review-event/huesped.service';
+import { environments } from '../environments';
 @Module({
   imports: [
     CqrsModule,
@@ -98,7 +99,8 @@ import { HuespedService } from './api/review-event/huesped.service';
         },
       ],
       //uri: 'amqps://farhdenj:BilLhsNpcQHME1p2ItwtM5sZImZaqmDC@shrimp.rmq.cloudamqp.com/farhdenj',
-      uri: 'amqp://localhost',
+      //uri: 'amqp://localhost',
+      uri: environments[process.env.URL_RABBIT] || 'amqp://localhost',
     }),
   ],
   controllers: [
