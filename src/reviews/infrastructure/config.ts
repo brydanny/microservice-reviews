@@ -9,7 +9,6 @@ export default registerAs('config', () => {
       port: parseInt(process.env.MONGO_PORT, 10),
       host: process.env.MONGO_HOST,
       connection: process.env.MONGO_CONNECTION,
-      urlRabbit: process.env.URL_RABBIT,
     },
   };
 });

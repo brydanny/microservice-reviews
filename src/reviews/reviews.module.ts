@@ -50,6 +50,7 @@ import { ReviewService } from './api/review-event/review.service';
 import { HostService } from './api/review-event/host.service';
 import { HuespedService } from './api/review-event/huesped.service';
 import { environments } from '../environments';
+//console.log('process.env.URL_RABBIT', process.env.URL_RABBIT);
 @Module({
   imports: [
     CqrsModule,
@@ -98,9 +99,12 @@ import { environments } from '../environments';
           type: 'fanout',
         },
       ],
-      //uri: 'amqps://farhdenj:BilLhsNpcQHME1p2ItwtM5sZImZaqmDC@shrimp.rmq.cloudamqp.com/farhdenj',
+      // uri: 'amqps://farhdenj:BilLhsNpcQHME1p2ItwtM5sZImZaqmDC@shrimp.rmq.cloudamqp.com/farhdenj',
+      uri:
+        process.env.URL_RABBIT ||
+        'amqps://farhdenj:BilLhsNpcQHME1p2ItwtM5sZImZaqmDC@shrimp.rmq.cloudamqp.com/farhdenj',
       //uri: 'amqp://localhost',
-      uri: environments[process.env.URL_RABBIT] || 'amqp://localhost',
+      //uri: environments[process.env.URL_RABBIT] || 'amqp://localhost',
     }),
   ],
   controllers: [
