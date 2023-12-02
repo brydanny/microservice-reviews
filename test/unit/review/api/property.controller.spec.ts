@@ -40,8 +40,11 @@ describe('HuespedController', () => {
 
   test('Crear una propiedad', () => {
     const createPropertyDto: CreatePropertyDto = {
+      id: 1,
       name: 'Cabaña entera',
       address: 'Laguna Verde, Valparaiso Region, Chile',
+      typeProperty: 'Casa',
+      city: 'Valparaiso',
     };
     propertyController.create(createPropertyDto);
     expect(commandBus.execute).toHaveBeenCalledWith(
