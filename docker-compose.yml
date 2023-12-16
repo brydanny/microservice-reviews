@@ -4,9 +4,12 @@ networks:
   review-net:
 
 services:
-  
+
   review:
-    image: brydanny/nestjs-microserv-review
+    #image: brydanny/nestjs-microserv-review
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       - MONGO_PORT=27017
       - MONGO_HOST=mongo
@@ -23,9 +26,10 @@ services:
       MONGO_INITDB_DATABASE: review-db
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+      RABBITMQ_URI: amqps://farhdenj:BilLhsNpcQHME1p2ItwtM5sZImZaqmDC@shrimp.rmq.cloudamqp.com/farhdenj
     ports:
       - 27017:27017
     networks:
-      - review-net  
+      - review-net
     volumes:
-      - ./mongo_data:/data/db  
+      - ./mongo_data:/data/db
