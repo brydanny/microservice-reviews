@@ -4,8 +4,6 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -29,3 +27,47 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    # - name: Configure SSH
+    #   env:
+    #     SSH_KEY: ${{ secrets.SSH_KEY }}
+    #     KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
+    #     SSH_HOST: ${{ secrets.HOST }}
+    #     SSH_USER: ${{ secrets.SSH_USER }}
+    #   run: |
+    #     mkdir -p ~/.ssh/
+    #     echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+    #     echo "$SSH_KEY" > ~/.ssh/staging.key
+    #     chmod 600 ~/.ssh/staging.key
+    #     cat >>~/.ssh/config <<END
+    #       Host staging
+    #         HostName $SSH_HOST
+    #         User $SSH_USER
+    #         IdentityFile ~/.ssh/staging.key
+    #         StrictHostKeyChecking no
+    #     END
+    # - name: Start the server
+    #   run: ssh staging 'bash deploy.sh'
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Configure SSH
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+        KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
+        SSH_HOST: ${{ secrets.HOST }}
+        SSH_USER: ${{ secrets.SSH_USER }}
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+        echo "$SSH_KEY" > ~/.ssh/production.key
+        chmod 600 ~/.ssh/production.key
+        cat >>~/.ssh/config <<END
+          Host production
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/production.key
+            StrictHostKeyChecking no
+        END
+    - name: Start the server
+      run: ssh production 'bash deploy.sh'
