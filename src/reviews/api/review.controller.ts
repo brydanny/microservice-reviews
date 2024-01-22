@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 //import { AppService } from '../../app.service';
 import { CreateReviewDto } from '../application/dtos/review.dto';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateReviewCommand } from './../application/commands/impl/create-review.command';
 import { GetReviewsQuery } from '../application/queries/impl/get-reviews.query';
+import { GetReviewQuery } from '../application/queries/impl/get-review.query';
 
 @Controller('review')
 export class ReviewController {
@@ -21,5 +22,9 @@ export class ReviewController {
   create(@Body() payload: CreateReviewDto) {
     console.log(payload);
     return this.commandBus.execute(new CreateReviewCommand(payload));
+  }
+  @Get('/:id')
+  findOne(@Param('id') id: string): Promise<GetReviewQuery> {
+    return this.queryBus.execute(new GetReviewQuery(id));
   }
 }
