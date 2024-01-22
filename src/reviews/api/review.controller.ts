@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
 //import { AppService } from '../../app.service';
 import { CreateReviewDto } from '../application/dtos/review.dto';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
@@ -15,8 +15,8 @@ export class ReviewController {
   ) {}
 
   @Get('/')
-  findAll() {
-    return this.queryBus.execute(new GetReviewsQuery());
+  findAll(@Query() query) {
+    return this.queryBus.execute(new GetReviewsQuery(query?.filter));
   }
   @Post()
   create(@Body() payload: CreateReviewDto) {

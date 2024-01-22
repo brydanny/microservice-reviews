@@ -36,7 +36,15 @@ export class ReviewRepository implements iReviewRepository {
     return this.reviewModel.findById(objectId).exec();
   };
 
-  findAll = (): Promise<ReviewModelSchema[]> => {
-    return this.reviewModel.find().exec();
+  findAll = (criteria?: any): Promise<ReviewModelSchema[]> => {
+    let filter = {};
+    if (criteria !== undefined) {
+      const query = new RegExp(criteria, 'i');
+      filter = {
+        $or: [{ propertyId: query }],
+      };
+    }
+    //return this.reviewModel.find().exec();
+    return this.reviewModel.find(filter).exec();
   };
 }
