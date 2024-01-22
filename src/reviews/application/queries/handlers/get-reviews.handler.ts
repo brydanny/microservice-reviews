@@ -7,6 +7,6 @@ export class GetReviewsHandler implements IQueryHandler<GetReviewsQuery> {
   constructor(private readonly repository: ReviewRepository) {}
 
   async execute(query: GetReviewsQuery) {
-    return this.repository.findAll();
+    return this.repository.findAll(query.filter);
   }
 }
