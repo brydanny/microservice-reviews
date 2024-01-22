@@ -32,7 +32,8 @@ export class ReviewRepository implements iReviewRepository {
   };
 
   findById = (id: string): Promise<ReviewModelSchema> => {
-    return this.reviewModel.findById(id).exec();
+    const objectId = new ObjectId(id);
+    return this.reviewModel.findById(objectId).exec();
   };
 
   findAll = (): Promise<ReviewModelSchema[]> => {

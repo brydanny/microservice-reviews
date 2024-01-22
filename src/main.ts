@@ -22,9 +22,12 @@ async function bootstrap() {
     options: { urls: ['amqp://192.168.68.51:5672'], queue: 'properties' },
   });*/
 
-  const PORT = process.env.PORT || 3000;
+  ///const PORT = process.env.PORT || 3000;
+  const PORT = process.env.PORT || 3001;
   // await app.startAllMicroservices();
-  await app.listen(3000);
+  app.enableCors();
+  ///await app.listen(3000);
+  await app.listen(3001);
   console.log(`App ejecutandose en el puerto ${PORT}`);
 }
 bootstrap();
