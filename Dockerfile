@@ -11,8 +11,8 @@ RUN apk add --no-cache tini
 RUN npm install && npm cache clean --force
 #RUN npm install --no-update-notifier && npm cache clean --force
 
-COPY . . 
+COPY . .
 
 RUN npm run build
 
-CMD ["npm", "start"]
+CMD ["npm", "start", "start:prod"]

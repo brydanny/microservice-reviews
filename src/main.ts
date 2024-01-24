@@ -23,11 +23,11 @@ async function bootstrap() {
   });*/
 
   ///const PORT = process.env.PORT || 3000;
-  const PORT = process.env.PORT || 3001;
+  const PORT = process.env.PORT || 3000;
   // await app.startAllMicroservices();
   app.enableCors();
   ///await app.listen(3000);
-  await app.listen(3001);
+  await app.listen(3000);
   console.log(`App ejecutandose en el puerto ${PORT}`);
 }
 bootstrap();
