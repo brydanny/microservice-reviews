@@ -4,7 +4,7 @@
 
 ## Description
 
-El proyecto esta desarrollado en Nestjs, contiene el microservicio de Reseñas de NurBNB que permite: a los Huespedes dejar reseñas sobre alguna propiedad en la que se hayan alojado, también permite a los Anfitriones registrar reseñas a los huespedes. 
+El proyecto esta desarrollado en Nestjs, contiene el microservicio de Reseñas de NurBNB que permite: a los Huespedes dejar reseñas sobre alguna propiedad en la que se hayan alojado, también permite a los Anfitriones registrar reseñas a los huespedes.
 
 ## Diagrama de clases
 
@@ -59,7 +59,7 @@ $ npm run test:integration
 
 ```bash
 # crear imagen
-$ docker image build -t brydanny/nestjs-microserv-review .
+$ docker image build -t brydanny/microserv-review .
 
 # correr contenedor
 $ docker container run -d --name micro -p 3009:3000 brydanny/nestjs-microserv-review
@@ -68,6 +68,6 @@ $ docker container run -d --name micro -p 3009:3000 brydanny/nestjs-microserv-re
 $ docker image push brydanny/nestjs-microserv-review
 
 # levantar contenedores
-docker-compose up -d 
+docker-compose up -d
 
 
