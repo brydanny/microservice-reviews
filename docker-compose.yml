@@ -5,7 +5,7 @@ networks:
 
 services:
   review:
-    image: brydanny/microservice-reviews:latest
+    image: brydanny/microservice-reviews:main
     environment:
       - MONGO_PORT=27017
       - MONGO_HOST=mongo
