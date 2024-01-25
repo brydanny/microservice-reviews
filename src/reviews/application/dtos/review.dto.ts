@@ -1,16 +1,10 @@
-import {
-  IsString,
-  IsNotEmpty,
-  IsNumber,
-  IsObject,
-  ValidateNested,
-} from 'class-validator';
+import { IsString, IsNotEmpty, IsObject } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
-import { CategoryReview } from '../../domain/model/review-property/category';
+import { CategoryReviewDto } from './category-review.dto';
 
 export class CreateReviewDto {
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
   @ApiProperty({ description: `property comentario` })
   readonly comentario: string;
@@ -27,8 +21,7 @@ export class CreateReviewDto {
 
   @IsNotEmpty()
   @IsObject()
-  @ValidateNested()
-  @Type(() => CategoryReview)
-  @ApiProperty({ type: CategoryReview })
-  categoryReview: CategoryReview;
+  @Type(() => CategoryReviewDto)
+  @ApiProperty({ type: CategoryReviewDto })
+  categoryReview: CategoryReviewDto;
 }
