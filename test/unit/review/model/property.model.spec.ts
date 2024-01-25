@@ -2,7 +2,7 @@ import { Property } from '../../../../src/reviews/domain/model/property/property
 describe('Property', () => {
   it('debería crear una instancia de Property correctamente', () => {
     // Arrange: Configuración inicial
-    const id = 1;
+    const id = '100000000';
     const name = 'Ejemplo Propiedad';
     const address = 'Ejemplo Dirección';
     const type_property = 'Ejemplo tipo';
@@ -18,7 +18,7 @@ describe('Property', () => {
 
   it('debería permitir cambiar el nombre de la propiedad', () => {
     // Arrange: Configuración inicial
-    const id = 1;
+    const id = '100000000000';
     const name = 'Ejemplo Propiedad';
     const address = 'Ejemplo Dirección';
     const type_property = 'Ejemplo tipo';

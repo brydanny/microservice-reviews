@@ -46,10 +46,10 @@ import { HostFactory } from './domain/factories/host.factory';
 import { ReviewGuestMapper } from './infrastructure/mapper/review-guest.mapper';
 import { ReviewGuestFactory } from './domain/factories/review-guest.factory';
 import { RabbitMQModule } from '@golevelup/nestjs-rabbitmq';
-import { ReviewService } from './api/review-event/review.service';
-import { HostService } from './api/review-event/host.service';
-import { HuespedService } from './api/review-event/huesped.service';
+import { HostService } from './api/host-event/host.service';
 import { environments } from '../environments';
+import { PropertyService } from './api/property-event/property.service';
+import { GuestService } from './api/guest-event/guest.service';
 //console.log('process.env.URL_RABBIT', process.env.URL_RABBIT);
 @Module({
   imports: [
@@ -87,22 +87,24 @@ import { environments } from '../environments';
     RabbitMQModule.forRoot(RabbitMQModule, {
       exchanges: [
         {
-          name: 'demostracion',
+          name: 'property-service:property-created',
+          type: 'fanout',
+        },
+        {
+          name: 'user-service:guest-created',
+          type: 'fanout',
+        },
+        {
+          name: 'user-service:host-created',
           type: 'fanout',
         },
         {
           name: 'booking-service:reserva-creada',
           type: 'fanout',
         },
-        {
-          name: 'booking-service:guest-creado',
-          type: 'fanout',
-        },
       ],
       // uri: 'amqps://farhdenj:BilLhsNpcQHME1p2ItwtM5sZImZaqmDC@shrimp.rmq.cloudamqp.com/farhdenj',
-      uri:
-        process.env.URL_RABBIT ||
-        'amqps://farhdenj:BilLhsNpcQHME1p2ItwtM5sZImZaqmDC@shrimp.rmq.cloudamqp.com/farhdenj',
+      uri: process.env.URL_RABBIT || 'amqp://3.131.89.227:5672',
       //uri: 'amqp://localhost',
       //uri: environments[process.env.URL_RABBIT] || 'amqp://localhost',
     }),
@@ -132,9 +134,9 @@ import { environments } from '../environments';
     HostFactory,
     ReviewGuestMapper,
     ReviewGuestFactory,
-    ReviewService,
+    PropertyService,
     HostService,
-    HuespedService,
+    GuestService,
   ],
 })
 export class ReviewsModule {}

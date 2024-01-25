@@ -40,7 +40,7 @@ describe('HuespedController', () => {
 
   test('Crear una propiedad', () => {
     const createPropertyDto: CreatePropertyDto = {
-      id: 1,
+      id: '1000000',
       name: 'Cabaña entera',
       address: 'Laguna Verde, Valparaiso Region, Chile',
       typeProperty: 'Casa',

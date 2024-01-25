@@ -2,10 +2,9 @@ import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreatePropertyDto {
-  @IsNumber()
   @IsNotEmpty()
   @ApiProperty({ description: `property id ` })
-  readonly id: number;
+  readonly id: string;
 
   @IsString()
   @IsNotEmpty()
