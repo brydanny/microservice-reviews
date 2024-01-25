@@ -1,14 +1,14 @@
 import { AggregateRoot } from '@nestjs/cqrs';
 
 export class Property extends AggregateRoot {
-  private id: number;
+  private id: string;
   private name: string;
   private address: string;
   private typeProperty: string;
   private city: string;
 
   constructor(
-    id: number,
+    id: string,
     name: string,
     address: string,
     typeProperty: string,
@@ -21,10 +21,10 @@ export class Property extends AggregateRoot {
     this.typeProperty = typeProperty;
     this.city = city;
   }
-  public getId(): number {
+  public getId(): string {
     return this.id;
   }
-  public setId(value: number) {
+  public setId(value: string) {
     this.id = value;
   }
   public getName(): string {

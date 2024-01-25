@@ -40,9 +40,11 @@ describe('HostController', () => {
 
   test('Crear una host', () => {
     const createHostDto: CreateHostDto = {
+      id: '10000000',
       name: 'Juan Perez',
       ciudad: 'Sucre',
       pais: 'Bolivia',
+      email: 'prueba@gmail.com',
     };
     hostController.create(createHostDto);
     expect(commandBus.execute).toHaveBeenCalledWith(

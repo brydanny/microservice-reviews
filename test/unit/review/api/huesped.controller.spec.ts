@@ -40,9 +40,11 @@ describe('HuespedController', () => {
 
   test('Crear una huesped', () => {
     const createHuespedDto: CreateHuespedDto = {
+      id: '10000000',
       name: 'Juan Perez',
       ciudad: 'Sucre',
       pais: 'Bolivia',
+      email: 'prueba@gmail.com',
     };
     huespedController.create(createHuespedDto);
     expect(commandBus.execute).toHaveBeenCalledWith(
