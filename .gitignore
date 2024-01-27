@@ -36,3 +36,8 @@ lerna-debug.log*
 
 /mongo_data
 *.env
+
+/test/reports
+/test-results/
+/playwright-report/
+/playwright/.cache/

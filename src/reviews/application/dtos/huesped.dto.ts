@@ -10,12 +10,10 @@ export class CreateHuespedDto {
   @ApiProperty({ description: `huesped name` })
   readonly name: string;
 
-  @IsNumber()
   @IsNotEmpty()
   @ApiProperty({ description: `huesped ciudad` })
   readonly ciudad: string;
 
-  @IsNumber()
   @IsNotEmpty()
   @ApiProperty({ description: `huesped pais` })
   readonly pais: string;
